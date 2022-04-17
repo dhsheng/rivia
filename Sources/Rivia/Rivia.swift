@@ -1,7 +1,3 @@
-//AccountServiceClient
-
-import Security
-
 
 typealias RiviaAccountServiceClient = AccountServiceClient
 typealias RiviaAccountLoginWithOAuthRequest = LoginWithOAuthRequest
