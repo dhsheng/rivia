@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `FriendshipServiceClient`, then call methods of this protocol to make API calls.
-internal protocol FriendshipServiceClientProtocol: GRPCClient {
+public protocol FriendshipServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: FriendshipServiceClientInterceptorFactoryProtocol? { get }
 
@@ -62,7 +62,7 @@ internal protocol FriendshipServiceClientProtocol: GRPCClient {
 }
 
 extension FriendshipServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "FriendshipService"
   }
 
@@ -72,7 +72,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to CreateFollow.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func createFollow(
+  public func createFollow(
     _ request: CreateFollowRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<CreateFollowRequest, CreateFollowResponse> {
@@ -90,7 +90,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to DestroyFollow.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func destroyFollow(
+  public func destroyFollow(
     _ request: DestroyFollowRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<DestroyFollowRequest, DestroyFollowResponse> {
@@ -108,7 +108,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to FetchFollowers.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchFollowers(
+  public func fetchFollowers(
     _ request: FetchFollowersRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchFollowersRequest, FetchFollowersResponse> {
@@ -126,7 +126,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to FetchFollowing.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchFollowing(
+  public func fetchFollowing(
     _ request: FetchFollowingRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchFollowingRequest, FetchFollowingResponse> {
@@ -144,7 +144,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to FetchCounter.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchCounter(
+  public func fetchCounter(
     _ request: FetchCounterRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchCounterRequest, FetchCounterResponse> {
@@ -162,7 +162,7 @@ extension FriendshipServiceClientProtocol {
   ///   - request: Request to send to FetchFriends.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchFriends(
+  public func fetchFriends(
     _ request: FetchFriendsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchFriendsRequest, FetchFriendsResponse> {
@@ -175,7 +175,7 @@ extension FriendshipServiceClientProtocol {
   }
 }
 
-internal protocol FriendshipServiceClientInterceptorFactoryProtocol {
+public protocol FriendshipServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'createFollow'.
   func makeCreateFollowInterceptors() -> [ClientInterceptor<CreateFollowRequest, CreateFollowResponse>]
@@ -196,10 +196,10 @@ internal protocol FriendshipServiceClientInterceptorFactoryProtocol {
   func makeFetchFriendsInterceptors() -> [ClientInterceptor<FetchFriendsRequest, FetchFriendsResponse>]
 }
 
-internal final class FriendshipServiceClient: FriendshipServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: FriendshipServiceClientInterceptorFactoryProtocol?
+public final class FriendshipServiceClient: FriendshipServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: FriendshipServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the FriendshipService service.
   ///
@@ -207,7 +207,7 @@ internal final class FriendshipServiceClient: FriendshipServiceClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: FriendshipServiceClientInterceptorFactoryProtocol? = nil

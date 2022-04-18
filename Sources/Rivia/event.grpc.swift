@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `EventServiceClient`, then call methods of this protocol to make API calls.
-internal protocol EventServiceClientProtocol: GRPCClient {
+public protocol EventServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: EventServiceClientInterceptorFactoryProtocol? { get }
 
@@ -37,7 +37,7 @@ internal protocol EventServiceClientProtocol: GRPCClient {
 }
 
 extension EventServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "EventService"
   }
 
@@ -47,7 +47,7 @@ extension EventServiceClientProtocol {
   ///   - request: Request to send to PublishUserEvent.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func publishUserEvent(
+  public func publishUserEvent(
     _ request: PublishUserEventRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<PublishUserEventRequest, PublishUserEventResponse> {
@@ -60,16 +60,16 @@ extension EventServiceClientProtocol {
   }
 }
 
-internal protocol EventServiceClientInterceptorFactoryProtocol {
+public protocol EventServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'publishUserEvent'.
   func makePublishUserEventInterceptors() -> [ClientInterceptor<PublishUserEventRequest, PublishUserEventResponse>]
 }
 
-internal final class EventServiceClient: EventServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: EventServiceClientInterceptorFactoryProtocol?
+public final class EventServiceClient: EventServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: EventServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the EventService service.
   ///
@@ -77,7 +77,7 @@ internal final class EventServiceClient: EventServiceClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: EventServiceClientInterceptorFactoryProtocol? = nil

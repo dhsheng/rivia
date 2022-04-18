@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `IMConfigServiceClient`, then call methods of this protocol to make API calls.
-internal protocol IMConfigServiceClientProtocol: GRPCClient {
+public protocol IMConfigServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: IMConfigServiceClientInterceptorFactoryProtocol? { get }
 
@@ -37,7 +37,7 @@ internal protocol IMConfigServiceClientProtocol: GRPCClient {
 }
 
 extension IMConfigServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "IMConfigService"
   }
 
@@ -47,7 +47,7 @@ extension IMConfigServiceClientProtocol {
   ///   - request: Request to send to FetchIMConfig.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchIMConfig(
+  public func fetchIMConfig(
     _ request: FetchIMConfigRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchIMConfigRequest, FetchIMConfigResponse> {
@@ -60,16 +60,16 @@ extension IMConfigServiceClientProtocol {
   }
 }
 
-internal protocol IMConfigServiceClientInterceptorFactoryProtocol {
+public protocol IMConfigServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'fetchIMConfig'.
   func makeFetchIMConfigInterceptors() -> [ClientInterceptor<FetchIMConfigRequest, FetchIMConfigResponse>]
 }
 
-internal final class IMConfigServiceClient: IMConfigServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: IMConfigServiceClientInterceptorFactoryProtocol?
+public final class IMConfigServiceClient: IMConfigServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: IMConfigServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the IMConfigService service.
   ///
@@ -77,7 +77,7 @@ internal final class IMConfigServiceClient: IMConfigServiceClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: IMConfigServiceClientInterceptorFactoryProtocol? = nil

@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `ConfigurationServiceClient`, then call methods of this protocol to make API calls.
-internal protocol ConfigurationServiceClientProtocol: GRPCClient {
+public protocol ConfigurationServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: ConfigurationServiceClientInterceptorFactoryProtocol? { get }
 
@@ -37,7 +37,7 @@ internal protocol ConfigurationServiceClientProtocol: GRPCClient {
 }
 
 extension ConfigurationServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "ConfigurationService"
   }
 
@@ -47,7 +47,7 @@ extension ConfigurationServiceClientProtocol {
   ///   - request: Request to send to FetchConfiguration.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchConfiguration(
+  public func fetchConfiguration(
     _ request: FetchConfigurationRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchConfigurationRequest, FetchConfigurationResponse> {
@@ -60,16 +60,16 @@ extension ConfigurationServiceClientProtocol {
   }
 }
 
-internal protocol ConfigurationServiceClientInterceptorFactoryProtocol {
+public protocol ConfigurationServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'fetchConfiguration'.
   func makeFetchConfigurationInterceptors() -> [ClientInterceptor<FetchConfigurationRequest, FetchConfigurationResponse>]
 }
 
-internal final class ConfigurationServiceClient: ConfigurationServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: ConfigurationServiceClientInterceptorFactoryProtocol?
+public final class ConfigurationServiceClient: ConfigurationServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: ConfigurationServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the ConfigurationService service.
   ///
@@ -77,7 +77,7 @@ internal final class ConfigurationServiceClient: ConfigurationServiceClientProto
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: ConfigurationServiceClientInterceptorFactoryProtocol? = nil

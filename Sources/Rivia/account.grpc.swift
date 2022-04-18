@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `AccountServiceClient`, then call methods of this protocol to make API calls.
-internal protocol AccountServiceClientProtocol: GRPCClient {
+public protocol AccountServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: AccountServiceClientInterceptorFactoryProtocol? { get }
 
@@ -42,7 +42,7 @@ internal protocol AccountServiceClientProtocol: GRPCClient {
 }
 
 extension AccountServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "account.AccountService"
   }
 
@@ -52,7 +52,7 @@ extension AccountServiceClientProtocol {
   ///   - request: Request to send to LoginWithOAuth.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func loginWithOAuth(
+  public func loginWithOAuth(
     _ request: LoginWithOAuthRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<LoginWithOAuthRequest, LoginResponse> {
@@ -70,7 +70,7 @@ extension AccountServiceClientProtocol {
   ///   - request: Request to send to LoginWithEmail.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func loginWithEmail(
+  public func loginWithEmail(
     _ request: LoginWithEmailRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<LoginWithEmailRequest, LoginResponse> {
@@ -83,7 +83,7 @@ extension AccountServiceClientProtocol {
   }
 }
 
-internal protocol AccountServiceClientInterceptorFactoryProtocol {
+public protocol AccountServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'loginWithOAuth'.
   func makeLoginWithOAuthInterceptors() -> [ClientInterceptor<LoginWithOAuthRequest, LoginResponse>]
@@ -92,10 +92,10 @@ internal protocol AccountServiceClientInterceptorFactoryProtocol {
   func makeLoginWithEmailInterceptors() -> [ClientInterceptor<LoginWithEmailRequest, LoginResponse>]
 }
 
-internal final class AccountServiceClient: AccountServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: AccountServiceClientInterceptorFactoryProtocol?
+public final class AccountServiceClient: AccountServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: AccountServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the account.AccountService service.
   ///
@@ -103,7 +103,7 @@ internal final class AccountServiceClient: AccountServiceClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: AccountServiceClientInterceptorFactoryProtocol? = nil

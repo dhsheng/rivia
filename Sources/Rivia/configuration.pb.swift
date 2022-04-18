@@ -20,41 +20,41 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct FetchConfigurationResponse {
+public struct FetchConfigurationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var enableTraceNetworkLatency: Bool = false
+  public var enableTraceNetworkLatency: Bool = false
 
-  var enableErrorReport: Bool = false
+  public var enableErrorReport: Bool = false
 
-  var appleMusicDeveloperToken: String = String()
+  public var appleMusicDeveloperToken: String = String()
 
-  var timAppID: String = String()
+  public var timAppID: String = String()
 
-  var timSign: String = String()
+  public var timSign: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct FetchConfigurationRequest {
+public struct FetchConfigurationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension FetchConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "FetchConfigurationResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "FetchConfigurationResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "enable_trace_network_latency"),
     2: .standard(proto: "enable_error_report"),
     3: .standard(proto: "apple_music_developer_token"),
@@ -62,7 +62,7 @@ extension FetchConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     5: .standard(proto: "tim_sign"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -78,7 +78,7 @@ extension FetchConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.enableTraceNetworkLatency != false {
       try visitor.visitSingularBoolField(value: self.enableTraceNetworkLatency, fieldNumber: 1)
     }
@@ -97,7 +97,7 @@ extension FetchConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: FetchConfigurationResponse, rhs: FetchConfigurationResponse) -> Bool {
+  public static func ==(lhs: FetchConfigurationResponse, rhs: FetchConfigurationResponse) -> Bool {
     if lhs.enableTraceNetworkLatency != rhs.enableTraceNetworkLatency {return false}
     if lhs.enableErrorReport != rhs.enableErrorReport {return false}
     if lhs.appleMusicDeveloperToken != rhs.appleMusicDeveloperToken {return false}
@@ -109,19 +109,19 @@ extension FetchConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension FetchConfigurationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "FetchConfigurationRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let protoMessageName: String = "FetchConfigurationRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: FetchConfigurationRequest, rhs: FetchConfigurationRequest) -> Bool {
+  public static func ==(lhs: FetchConfigurationRequest, rhs: FetchConfigurationRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

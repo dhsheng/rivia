@@ -26,7 +26,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `UserServiceClient`, then call methods of this protocol to make API calls.
-internal protocol UserServiceClientProtocol: GRPCClient {
+public protocol UserServiceClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: UserServiceClientInterceptorFactoryProtocol? { get }
 
@@ -37,7 +37,7 @@ internal protocol UserServiceClientProtocol: GRPCClient {
 }
 
 extension UserServiceClientProtocol {
-  internal var serviceName: String {
+  public var serviceName: String {
     return "UserService"
   }
 
@@ -47,7 +47,7 @@ extension UserServiceClientProtocol {
   ///   - request: Request to send to FetchUser.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  internal func fetchUser(
+  public func fetchUser(
     _ request: FetchUserRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<FetchUserRequest, FetchUserResponse> {
@@ -60,16 +60,16 @@ extension UserServiceClientProtocol {
   }
 }
 
-internal protocol UserServiceClientInterceptorFactoryProtocol {
+public protocol UserServiceClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'fetchUser'.
   func makeFetchUserInterceptors() -> [ClientInterceptor<FetchUserRequest, FetchUserResponse>]
 }
 
-internal final class UserServiceClient: UserServiceClientProtocol {
-  internal let channel: GRPCChannel
-  internal var defaultCallOptions: CallOptions
-  internal var interceptors: UserServiceClientInterceptorFactoryProtocol?
+public final class UserServiceClient: UserServiceClientProtocol {
+  public let channel: GRPCChannel
+  public var defaultCallOptions: CallOptions
+  public var interceptors: UserServiceClientInterceptorFactoryProtocol?
 
   /// Creates a client for the UserService service.
   ///
@@ -77,7 +77,7 @@ internal final class UserServiceClient: UserServiceClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  internal init(
+  public init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: UserServiceClientInterceptorFactoryProtocol? = nil
